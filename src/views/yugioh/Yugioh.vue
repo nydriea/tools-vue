@@ -10,13 +10,13 @@
             :closable="false"
           />
         </div>
-        <el-alert
+        <!-- <el-alert
           title="非常抱歉，三方图库不再提供外链支持，请大家手动下载卡图后上传。参考链接，最后数字是卡密：https://images.ygoprodeck.com/images/cards_cropped/10000.jpg"
           effect="dark"
           type="warning"
           center
           closable
-        />
+        /> -->
         <YugiohCard ref="yugiohCard" :data="form" />
       </template>
 
@@ -151,6 +151,7 @@
                 <el-option label="融合 / 灵摆" value="fusion-pendulum" />
                 <el-option label="同调 / 灵摆" value="synchro-pendulum" />
                 <el-option label="超量 / 灵摆" value="xyz-pendulum" />
+                <el-option label="连接 / 灵摆" value="link-pendulum" />
               </el-select>
             </el-form-item>
             <el-form-item v-if="showLevel" label="星级">
@@ -198,7 +199,7 @@
               />
               <span class="tip">（?：-1，∞：-2）</span>
             </el-form-item>
-            <el-form-item v-if="(form.type === 'monster' && form.cardType !== 'link') || form.type === 'pendulum'" label="DEF">
+            <el-form-item v-if="(form.type === 'monster' && form.cardType !== 'link') || (form.type === 'pendulum' && form.pendulumType != 'link-pendulum')" label="DEF">
               <el-input-number
                 v-model="form.def"
                 :min="-2"
@@ -207,7 +208,7 @@
               />
               <span class="tip">（?：-1，∞：-2）</span>
             </el-form-item>
-            <el-form-item v-if="form.type === 'monster' && form.cardType === 'link'" label="箭头">
+            <el-form-item v-if="(form.type === 'monster' && form.cardType === 'link') || (form.type === 'pendulum' && form.pendulumType == 'link-pendulum')" label="箭头">
               <div class="arrow-form">
                 <div
                   v-for="item in [8,1,2,7,9,3,6,5,4]"

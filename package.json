@@ -24,6 +24,8 @@
     "lodash": "^4.17.21",
     "md5": "^2.3.0",
     "mime": "^3.0.0",
+    "module-alias": "^2.2.2",
+    "node": "^19.2.0",
     "normalize.css": "^8.0.1",
     "qrcode.vue": "^3.3.3",
     "qs": "^6.11.0",
@@ -40,7 +42,7 @@
     "eslint-define-config": "^1.12.0",
     "eslint-plugin-vue": "^9.7.0",
     "sass": "^1.56.1",
-    "vite": "^3.2.3",
+    "vite": "^3.2.5",
     "vite-plugin-compression": "^0.5.1"
   },
   "engines": {

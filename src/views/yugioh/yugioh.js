@@ -201,6 +201,8 @@ export function parsePendulumType(data) {
       return 'effect-pendulum';
     } else if (data.type & 0x10) {
       return 'normal-pendulum';
+    } else if (Data.type & 0x4000000) {
+      return 'Llink-pendulum';
     } else {
       return 'normal-pendulum';
     }

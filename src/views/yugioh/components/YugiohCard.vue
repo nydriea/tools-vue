@@ -22,21 +22,21 @@
     </div>
 
     <div v-if="showAttributeRare" class="attribute-rare">
-      <el-image :src="`${baseImage}/attribute-rare.png`" />
+      <el-image :src="getImageUrl(`attribute-rare.png`)" />
     </div>
 
     <div v-if="showLevel" class="card-level" :style="levelStyle">
-      <el-image v-for="item in data.level" :src="baseImage + '/level.png'" />
+      <el-image v-for="item in data.level" :src="getImageUrl('level.png')" />
     </div>
 
     <div v-if="showRank" class="card-rank" :style="rankStyle">
-      <el-image v-for="item in data.rank" :src="baseImage + '/rank.png'" />
+      <el-image v-for="item in data.rank" :src="getImageUrl('rank.png')" />
     </div>
 
     <div v-if="['spell','trap'].includes(data.type)" class="spell-trap">
       <span>{{ ['en', 'kr'].includes(data.language) ? '[' : '【' }}</span>
       <CompressText :text="spellTrapName" />
-      <el-image v-if="data.icon" class="spell-trap-icon" :src="`${baseImage}/icon-${data.icon}.png`" />
+      <el-image v-if="data.icon" class="spell-trap-icon" :src="getImageUrl(`icon-${data.icon}.png`)" />
       <span>{{ ['en', 'kr'].includes(data.language) ? ']' : '】' }}</span>
     </div>
 
@@ -81,24 +81,37 @@
       <span>{{ data.package }}</span>
     </div>
 
-    <div v-if="data.type === 'monster' && data.cardType === 'link'" class="link-arrow">
-      <el-image v-show="data.arrowList.includes(1)" :src="baseImage + '/arrow-up-on.png'" style="top: 278px;left: 555px" />
-      <el-image v-show="data.arrowList.includes(2)" :src="baseImage + '/arrow-right-up-on.png'" style="top: 299px;left: 1130px" />
-      <el-image v-show="data.arrowList.includes(3)" :src="baseImage + '/arrow-right-on.png'" style="top: 761px;left: 1223px" />
-      <el-image v-show="data.arrowList.includes(4)" :src="baseImage + '/arrow-right-down-on.png'" style="top: 1336px;left: 1130px" />
-      <el-image v-show="data.arrowList.includes(5)" :src="baseImage + '/arrow-down-on.png'" style="top: 1428px;left: 555px" />
-      <el-image v-show="data.arrowList.includes(6)" :src="baseImage + '/arrow-left-down-on.png'" style="top: 1336px;left: 95px" />
-      <el-image v-show="data.arrowList.includes(7)" :src="baseImage + '/arrow-left-on.png'" style="top: 758px;left: 71px" />
-      <el-image v-show="data.arrowList.includes(8)" :src="baseImage + '/arrow-left-up-on.png'" style="top: 299px;left: 95px" />
+    <div v-if="(data.type === 'monster' && data.cardType === 'link')" class="link-arrow">
+      <el-image v-show="data.arrowList.includes(1)" :src="getImageUrl('arrow-up-on.png')" style="top: 278px;left: 555px" />
+      <el-image v-show="data.arrowList.includes(2)" :src="getImageUrl('arrow-right-up-on.png')" style="top: 299px;left: 1130px" />
+      <el-image v-show="data.arrowList.includes(3)" :src="getImageUrl('arrow-right-on.png')" style="top: 761px;left: 1223px" />
+      <el-image v-show="data.arrowList.includes(4)" :src="getImageUrl('arrow-right-down-on.png')" style="top: 1336px;left: 1130px" />
+      <el-image v-show="data.arrowList.includes(5)" :src="getImageUrl('arrow-down-on.png')" style="top: 1428px;left: 555px" />
+      <el-image v-show="data.arrowList.includes(6)" :src="getImageUrl('arrow-left-down-on.png')" style="top: 1336px;left: 95px" />
+      <el-image v-show="data.arrowList.includes(7)" :src="getImageUrl('arrow-left-on.png')" style="top: 758px;left: 71px" />
+      <el-image v-show="data.arrowList.includes(8)" :src="getImageUrl('arrow-left-up-on.png')" style="top: 299px;left: 95px" />
 
-      <el-image v-show="!data.arrowList.includes(1)" :src="baseImage + '/arrow-up-off.png'" style="top: 278px;left: 555px" />
-      <el-image v-show="!data.arrowList.includes(2)" :src="baseImage + '/arrow-right-up-off.png'" style="top: 299px;left: 1130px" />
-      <el-image v-show="!data.arrowList.includes(3)" :src="baseImage + '/arrow-right-off.png'" style="top: 761px;left: 1223px" />
-      <el-image v-show="!data.arrowList.includes(4)" :src="baseImage + '/arrow-right-down-off.png'" style="top: 1336px;left: 1130px" />
-      <el-image v-show="!data.arrowList.includes(5)" :src="baseImage + '/arrow-down-off.png'" style="top: 1428px;left: 555px" />
-      <el-image v-show="!data.arrowList.includes(6)" :src="baseImage + '/arrow-left-down-off.png'" style="top: 1336px;left: 95px" />
-      <el-image v-show="!data.arrowList.includes(7)" :src="baseImage + '/arrow-left-off.png'" style="top: 758px;left: 71px" />
-      <el-image v-show="!data.arrowList.includes(8)" :src="baseImage + '/arrow-left-up-off.png'" style="top: 299px;left: 95px" />
+      <el-image v-show="!data.arrowList.includes(1)" :src="getImageUrl('arrow-up-off.png')" style="top: 278px;left: 555px" />
+      <el-image v-show="!data.arrowList.includes(2)" :src="getImageUrl('arrow-right-up-off.png')" style="top: 299px;left: 1130px" />
+      <el-image v-show="!data.arrowList.includes(3)" :src="getImageUrl('arrow-right-off.png')" style="top: 761px;left: 1223px" />
+      <el-image v-show="!data.arrowList.includes(4)" :src="getImageUrl('arrow-right-down-off.png')" style="top: 1336px;left: 1130px" />
+      <el-image v-show="!data.arrowList.includes(5)" :src="getImageUrl('arrow-down-off.png')" style="top: 1428px;left: 555px" />
+      <el-image v-show="!data.arrowList.includes(6)" :src="getImageUrl('arrow-left-down-off.png')" style="top: 1336px;left: 95px" />
+      <el-image v-show="!data.arrowList.includes(7)" :src="getImageUrl('arrow-left-off.png')" style="top: 758px;left: 71px" />
+      <el-image v-show="!data.arrowList.includes(8)" :src="getImageUrl('arrow-left-up-off.png')" style="top: 299px;left: 95px" />
+    </div>
+    <div v-else-if="(data.type === 'pendulum' && data.pendulumType === 'link-pendulum')" class="link-arrow">
+      
+      <el-image :src="getImageUrl('arrow-p-board.png')" style="top: 0px;left: 0px"/>
+      <el-image v-show="data.arrowList.includes(1)" :src="getImageUrl('arrow-p-up.png')" style="top: 294px;left: 588px" />
+      <el-image v-show="data.arrowList.includes(2)" :src="getImageUrl('arrow-p-right-up.png')" style="top: 308px;left: 1228px" />
+      <el-image v-show="data.arrowList.includes(3)" :src="getImageUrl('arrow-p-right.png')" style="top: 1030px;left: 1297px" />
+      <el-image v-show="data.arrowList.includes(4)" :src="getImageUrl('arrow-p-right-down.png')" style="top: 1838px;left: 1228px" />
+      <el-image v-show="data.arrowList.includes(5)" :src="getImageUrl('arrow-p-down.png')" style="top: 1909px;left: 588px" />
+      <el-image v-show="data.arrowList.includes(6)" :src="getImageUrl('arrow-p-left-down.png')" style="top: 1838px;left: 36px" />
+      <el-image v-show="data.arrowList.includes(7)" :src="getImageUrl('arrow-p-left.png')" style="top: 1030px;left: 17px" />
+      <el-image v-show="data.arrowList.includes(8)" :src="getImageUrl('arrow-p-left-up.png')" style="top: 308px;left: 36px" />
+
     </div>
 
     <div ref="cardDescription" v-card-description class="card-description">
@@ -144,12 +157,12 @@
 
     <div class="atk-def-link">
       <template v-if="data.language === 'astral'">
-        <el-image v-if="(data.type === 'monster' && data.cardType !== 'link') || data.type === 'pendulum'" :src="baseImage + '/atk-def-astral.svg'" />
-        <el-image v-if="data.type === 'monster' && data.cardType === 'link'" :src="baseImage + '/atk-link-astral.svg'" />
+        <el-image v-if="(data.type === 'monster' && data.cardType !== 'link') || (data.type === 'pendulum' && data.pendulumType !== 'link-pendulum')" :src="getImageUrl('atk-def-astral.svg')" />
+        <el-image v-if="(data.type === 'monster' && data.cardType === 'link') || (data.type === 'pendulum' && data.pendulumType === 'link-pendulum')" :src="getImageUrl('atk-link-astral.svg')" />
       </template>
       <template v-else>
-        <el-image v-if="(data.type === 'monster' && data.cardType !== 'link') || data.type === 'pendulum'" :src="baseImage + '/atk-def.svg'" />
-        <el-image v-if="data.type === 'monster' && data.cardType === 'link'" :src="baseImage + '/atk-link.svg'" />
+        <el-image v-if="(data.type === 'monster' && data.cardType !== 'link') || (data.type === 'pendulum' && data.pendulumType !== 'link-pendulum')" :src="getImageUrl('atk-def.svg')" />
+        <el-image v-if="(data.type === 'monster' && data.cardType === 'link') || (data.type === 'pendulum' && data.pendulumType === 'link-pendulum')" :src="getImageUrl('atk-link.svg')" />
       </template>
     </div>
 
@@ -159,13 +172,13 @@
       <span v-else-if="data.atk === -2">∞</span>
     </div>
 
-    <div v-if="(data.type === 'monster' && data.cardType !== 'link') || data.type === 'pendulum'" class="card-def" :style="defStyle">
+    <div v-if="(data.type === 'monster' && data.cardType !== 'link') || (data.type === 'pendulum' && data.pendulumType !== 'link-pendulum')" class="card-def" :style="defStyle">
       <span v-if="data.def >= 0">{{ data.language === 'astral' ? numberToFull(data.def) : data.def }}</span>
       <span v-else-if="data.def === -1">?</span>
       <span v-else-if="data.def === -2">∞</span>
     </div>
 
-    <div v-if="data.type === 'monster' && data.cardType === 'link'" class="card-link" :style="linkStyle">
+    <div v-if="(data.type === 'monster' && data.cardType === 'link') || (data.type === 'pendulum' && data.pendulumType === 'link-pendulum')" class="card-link" :style="linkStyle">
       <span>{{ data.language === 'astral' ? numberToFull(data.arrowList.length) : data.arrowList.length }}</span>
     </div>
 
@@ -186,7 +199,7 @@
     </div>
 
     <div v-if="data.twentieth" class="card-twentieth">
-      <el-image :src="baseImage + '/twentieth.png'" />
+      <el-image :src="getImageUrl('twentieth.png')" />
     </div>
   </div>
 </template>
@@ -209,6 +222,9 @@
     },
     methods: {
       numberToFull,
+      getImageUrl(name) {
+        return new URL(`/src/assets/image/${name}`, import.meta.url).href
+      },
       // 获取最后一行效果的压缩高度
       getLastDescriptionHeight() {
         let lastDescription = this.$refs.lastDescription?.[0];
@@ -237,11 +253,11 @@
       cardStyle() {
         let background;
         if (this.data.type === 'monster') {
-          background = `url(${this.baseImage}/card-${this.data.cardType}.png) no-repeat center/cover`;
+          background = `url(src/assets/image/card-${this.data.cardType}.png) no-repeat center/cover`;
         } else if (this.data.type === 'pendulum') {
-          background = `url(${this.baseImage}/card-${this.data.pendulumType}.png) no-repeat center/cover`;
+          background = `url(src/assets/image/card-${this.data.pendulumType}.png) no-repeat center/cover`;
         } else {
-          background = `url(${this.baseImage}/card-${this.data.type}.png) no-repeat center/cover`;
+          background = `url(src/assets/image/card-${this.data.type}.png) no-repeat center/cover`;
         }
         return {
           transform: `scale(${this.data.scale})`,
@@ -281,9 +297,9 @@
           if (!this.data.attribute) {
             return '';
           }
-          return `${this.baseImage}/attribute-${this.data.attribute}${suffix}.png`;
+          return `src/assets/image/attribute-${this.data.attribute}${suffix}.png`;
         } else {
-          return `${this.baseImage}/attribute-${this.data.type}${suffix}.png`;
+          return `src/assets/image/attribute-${this.data.type}${suffix}.png`;
         }
       },
       spellTrapName() {
@@ -336,6 +352,9 @@
           flag = ['normal', 'effect', 'ritual', 'fusion', 'synchro', 'token'].includes(this.data.cardType);
         } else if (this.data.type === 'pendulum') {
           flag = ['normal-pendulum', 'effect-pendulum', 'ritual-pendulum', 'fusion-pendulum', 'synchro-pendulum'].includes(this.data.pendulumType);
+        }
+        if (this.data.pendulumType === 'link-pendulum') {
+          flag = false;
         }
         return flag;
       },
@@ -392,9 +411,9 @@
       },
       maskSrc() {
         if (this.data.type === 'pendulum') {
-          return `${this.baseImage}/card-mask-pendulum.png`;
+          return `src/assets/image/card-mask-pendulum.png`;
         } else {
-          return `${this.baseImage}/card-mask.png`;
+          return `src/assets/image/card-mask.png`;
         }
       },
       maskStyle() {
@@ -462,7 +481,7 @@
         if (this.data.type === 'pendulum') {
           top = '1859px';
           left = '116px';
-        } else if (this.data.type === 'monster' && this.data.cardType === 'link') {
+        } else if ((this.data.type === 'monster' && this.data.cardType === 'link') || (this.data.type === 'pendulum' && this.data.pendulumType === 'link-pendulum')) {
           top = '1455px';
           right = '252px';
         } else {
@@ -572,14 +591,14 @@
       },
       copyrightSrc() {
         let color = this.data.type === 'monster' && this.data.cardType === 'xyz' ? 'white' : 'black';
-        return `${this.baseImage}/copyright-${this.data.copyright}-${color}.svg`;
+        return `src/assets/image/copyright-${this.data.copyright}-${color}.svg`;
       },
       laserSrc() {
-        return `${this.baseImage}/${this.data.laser}.png`;
+        return `src/assets/image/${this.data.laser}.png`;
       },
       rareSrc() {
         const suffix = this.data.type === 'pendulum' ? '-pendulum' : '';
-        return `${this.baseImage}/rare-${this.data.rare}${suffix}.png`;
+        return `src/assets/image/rare-${this.data.rare}${suffix}.png`;
       },
       rareStyle() {
         return {
