@@ -30,6 +30,23 @@
     }
   }
 
+  .link-spell-trap {
+    top: 248px;
+    right: 245px;
+    font-size: 80px;
+	
+    ::v-deep(.ruby) {
+      .rt {
+        font-size: 18px;
+        top: -2px;
+      }
+	}
+
+    .spell-trap-icon {
+      margin-left: 10px;
+    }
+  }
+
   .pendulum-description {
     top: 1286px;
     font-size: calc(36px * var(--descriptionZoom));

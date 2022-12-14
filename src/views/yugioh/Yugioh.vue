@@ -89,13 +89,7 @@
           <el-form :model="form" label-width="auto" style="margin-top: 10px">
 
             <el-form-item  label="卡名">
-              <el-autocomplete
-                v-model="form.name"
-                :fetch-suggestions="fetchCardName"
-                fit-input-width
-                placeholder="请输入卡名"
-                @select="selectCardName"
-              />
+              <el-input v-model="form.name" />
             </el-form-item>
             <el-form-item label="颜色" >
               <el-switch v-model="form.gradient" active-text="渐变色" />
@@ -222,7 +216,7 @@
             </el-form-item>
           </el-row>
             <el-form-item v-if="['monster','pendulum'].includes(form.type)" label="种族" >
-              <el-input v-model="form.monsterType" placeholder="请输入种族" />
+              <el-input v-model="form.monsterType"/>
             </el-form-item>
             <el-row>
             <el-form-item v-if="['monster','pendulum'].includes(form.type)" label="ATK"  style="width:43%">
@@ -278,7 +272,6 @@
                 v-model="form.pendulumDescription"
                 type="textarea"
                 :autosize="{minRows: 3}"
-                placeholder="请输入灵摆效果"
                 @input="inputPendulumDescription"
               />
             </el-form-item>
@@ -289,7 +282,6 @@
                 style="margin-top: 10px"
                 type="textarea"
                 :autosize="{minRows: 3}"
-                placeholder="请输入效果"
               />
             </el-form-item>
             <el-row>
@@ -313,11 +305,11 @@
             </el-form-item></el-row>
             <el-row>
             <el-form-item label="卡包" style="width:45%">
-              <el-input v-model="form.package" placeholder="请输入卡包" />
+              <el-input v-model="form.package" />
             </el-form-item>
             <el-form-item label="密码" style="width:45%;margin-left:35px">
               <div style="display: flex;align-items: center;flex: 1">
-                <el-input v-model="form.password" placeholder="请输入密码" />
+                <el-input v-model="form.password" />
                 <!-- <el-dropdown
                   style="margin-left: 10px;flex-shrink: 0"
                   type="primary"
@@ -615,91 +607,91 @@
           visibility: item === 9 ? 'hidden' : '',
         };
       },
-      fetchCardName(value, callback) {
-        if (this.form.language === 'astral') {
-          callback([]);
-          return;
-        }
-        if (value) {
-          this.axios({
-            method: 'get',
-            url: '/yugioh/card',
-            params: {
-              name: this.cardName,
-              lang: this.form.language,
-            },
-          }).then(res => {
-            let data = res.data;
-            data.forEach(value => {
-              value.value = `${value.name}（${value.id}）`;
-            });
-            callback(data);
-          });
-        } else {
-          callback([]);
-        }
-      },
-      selectCardName(value) {
-        this.form.name = value.name;
-        this.form.password = value.id;
-        this.searchCardByPassword();
-      },
-      searchCardByPassword(lang) {
-        if (this.form.password) {
-          this.btnLoading = true;
-          return this.axios({
-            method: 'get',
-            url: '/yugioh/card/' + this.form.password,
-            params: {
-              lang: lang || this.form.language,
-            },
-          }).then(res => {
-            if (lang) {
-              this.form.language = lang;
-            }
-            let cardInfo = parseYugiohCard(res.data, this.form.language);
-            Object.assign(this.form, cardInfo);
-          }).finally(() => {
-            this.btnLoading = false;
-          });
-        }
-      },
-      getRandomCard() {
-        this.btnLoading = true;
-        this.axios({
-          method: 'get',
-          url: '/yugioh/random-card',
-          params: {
-            lang: this.form.language,
-          },
-        }).then(res => {
-          let cardInfo = parseYugiohCard(res.data, this.form.language);
-          Object.assign(this.form, cardInfo);
-        }).finally(() => {
-          this.btnLoading = false;
-        });
-      },
-      shareCard() {
-        const { href } = this.$router.resolve({
-          path: '/share/yugioh',
-          query: {
-            language: this.form.language,
-            color: this.form.color,
-            align: this.form.align,
-            gradient: this.form.gradient,
-            gradientColor1: this.form.gradientColor1,
-            gradientColor2: this.form.gradientColor2,
-            descriptionZoom: this.form.descriptionZoom,
-            password: this.form.password,
-            copyright: this.form.copyright,
-            laser: this.form.laser,
-            rare: this.form.rare,
-            twentieth: this.form.twentieth,
-            radius: this.form.radius,
-          },
-        });
-        open(href, '_blank');
-      },
+      // fetchCardName(value, callback) {
+      //   if (this.form.language === 'astral') {
+      //     callback([]);
+      //     return;
+      //   }
+      //   if (value) {
+      //     this.axios({
+      //       method: 'get',
+      //       url: '/yugioh/card',
+      //       params: {
+      //         name: this.cardName,
+      //         lang: this.form.language,
+      //       },
+      //     }).then(res => {
+      //       let data = res.data;
+      //       data.forEach(value => {
+      //         value.value = `${value.name}（${value.id}）`;
+      //       });
+      //       callback(data);
+      //     });
+      //   } else {
+      //     callback([]);
+      //   }
+      // },
+      // selectCardName(value) {
+      //   this.form.name = value.name;
+      //   this.form.password = value.id;
+      //   this.searchCardByPassword();
+      // },
+      // searchCardByPassword(lang) {
+      //   if (this.form.password) {
+      //     this.btnLoading = true;
+      //     return this.axios({
+      //       method: 'get',
+      //       url: '/yugioh/card/' + this.form.password,
+      //       params: {
+      //         lang: lang || this.form.language,
+      //       },
+      //     }).then(res => {
+      //       if (lang) {
+      //         this.form.language = lang;
+      //       }
+      //       let cardInfo = parseYugiohCard(res.data, this.form.language);
+      //       Object.assign(this.form, cardInfo);
+      //     }).finally(() => {
+      //       this.btnLoading = false;
+      //     });
+      //   }
+      // },
+      // getRandomCard() {
+      //   this.btnLoading = true;
+      //   this.axios({
+      //     method: 'get',
+      //     url: '/yugioh/random-card',
+      //     params: {
+      //       lang: this.form.language,
+      //     },
+      //   }).then(res => {
+      //     let cardInfo = parseYugiohCard(res.data, this.form.language);
+      //     Object.assign(this.form, cardInfo);
+      //   }).finally(() => {
+      //     this.btnLoading = false;
+      //   });
+      // },
+      // shareCard() {
+      //   const { href } = this.$router.resolve({
+      //     path: '/share/yugioh',
+      //     query: {
+      //       language: this.form.language,
+      //       color: this.form.color,
+      //       align: this.form.align,
+      //       gradient: this.form.gradient,
+      //       gradientColor1: this.form.gradientColor1,
+      //       gradientColor2: this.form.gradientColor2,
+      //       descriptionZoom: this.form.descriptionZoom,
+      //       password: this.form.password,
+      //       copyright: this.form.copyright,
+      //       laser: this.form.laser,
+      //       rare: this.form.rare,
+      //       twentieth: this.form.twentieth,
+      //       radius: this.form.radius,
+      //     },
+      //   });
+      //   open(href, '_blank');
+      // },
       importJson(file) {
         let reader = new FileReader();
         reader.readAsText(file);

@@ -16,6 +16,17 @@
     }
   }
 
+  .link-spell-trap {
+    top: 254px;
+    right: 225px;
+    font-size: 76px;
+    letter-spacing: 2px;
+
+    .spell-trap-icon {
+      margin-left: 10px;
+    }
+  }
+
   .pendulum-description {
     top: 1282px;
     font-size: calc(36px * var(--descriptionZoom));

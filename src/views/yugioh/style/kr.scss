@@ -32,6 +32,20 @@
     }
   }
 
+  .link-spell-trap {
+    font-family: ygo-kr-race, serif;
+    top: 244px;
+    right: 270px;
+    font-size: 88px;
+    word-spacing: 5px;
+    transform: scaleY(0.75);
+    transform-origin: 50% 50%;
+
+    .spell-trap-icon {
+      margin-left: 10px;
+    }
+  }
+
   .pendulum-description {
     top: 1284px;
     font-size: calc(36px * var(--descriptionZoom));
