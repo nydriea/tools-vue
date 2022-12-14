@@ -33,7 +33,13 @@
       <el-image v-for="item in data.rank" :src="getImageUrl('rank.png')" />
     </div>
 
-    <div v-if="['spell','trap'].includes(data.type)" class="spell-trap">
+    <div v-if="['spell','trap'].includes(data.type)&&data.icon!=='link-continuous'" class="spell-trap">
+      <span>{{ ['en', 'kr'].includes(data.language) ? '[' : '【' }}</span>
+      <CompressText :text="spellTrapName" />
+      <el-image v-if="data.icon" class="spell-trap-icon" :src="getImageUrl(`icon-${data.icon}.png`)" />
+      <span>{{ ['en', 'kr'].includes(data.language) ? ']' : '】' }}</span>
+    </div>
+    <div v-else-if="['spell','trap'].includes(data.type)&&data.icon=='link-continuous'" class="link-spell-trap">
       <span>{{ ['en', 'kr'].includes(data.language) ? '[' : '【' }}</span>
       <CompressText :text="spellTrapName" />
       <el-image v-if="data.icon" class="spell-trap-icon" :src="getImageUrl(`icon-${data.icon}.png`)" />
@@ -81,24 +87,24 @@
       <span>{{ data.package }}</span>
     </div>
 
-    <div v-if="(data.type === 'monster' && data.cardType === 'link')" class="link-arrow">
-      <el-image v-show="data.arrowList.includes(1)" :src="getImageUrl('arrow-up-on.png')" style="top: 278px;left: 555px" />
-      <el-image v-show="data.arrowList.includes(2)" :src="getImageUrl('arrow-right-up-on.png')" style="top: 299px;left: 1130px" />
-      <el-image v-show="data.arrowList.includes(3)" :src="getImageUrl('arrow-right-on.png')" style="top: 761px;left: 1223px" />
-      <el-image v-show="data.arrowList.includes(4)" :src="getImageUrl('arrow-right-down-on.png')" style="top: 1336px;left: 1130px" />
-      <el-image v-show="data.arrowList.includes(5)" :src="getImageUrl('arrow-down-on.png')" style="top: 1428px;left: 555px" />
-      <el-image v-show="data.arrowList.includes(6)" :src="getImageUrl('arrow-left-down-on.png')" style="top: 1336px;left: 95px" />
-      <el-image v-show="data.arrowList.includes(7)" :src="getImageUrl('arrow-left-on.png')" style="top: 758px;left: 71px" />
-      <el-image v-show="data.arrowList.includes(8)" :src="getImageUrl('arrow-left-up-on.png')" style="top: 299px;left: 95px" />
+    <div v-if="((data.type === 'monster' && data.cardType === 'link') || ((data.type === 'spell' || data.type ==='trap') && data.icon === 'link-continuous'))" class="link-arrow">
+      <el-image v-show="data.arrowList.includes(1)" :src="getImageUrl('arrow-up-on.png')" style="top: 293px;left: 569px" />
+      <el-image v-show="data.arrowList.includes(2)" :src="getImageUrl('arrow-right-up-on.png')" style="top: 313px;left: 1141px" />
+      <el-image v-show="data.arrowList.includes(3)" :src="getImageUrl('arrow-right-on.png')" style="top: 774px;left: 1221px" />
+      <el-image v-show="data.arrowList.includes(4)" :src="getImageUrl('arrow-right-down-on.png')" style="top: 1347px;left: 1141px" />
+      <el-image v-show="data.arrowList.includes(5)" :src="getImageUrl('arrow-down-on.png')" style="top: 1427px;left: 569px" />
+      <el-image v-show="data.arrowList.includes(6)" :src="getImageUrl('arrow-left-down-on.png')" style="top: 1347px;left: 109px" />
+      <el-image v-show="data.arrowList.includes(7)" :src="getImageUrl('arrow-left-on.png')" style="top: 774px;left: 87px" />
+      <el-image v-show="data.arrowList.includes(8)" :src="getImageUrl('arrow-left-up-on.png')" style="top: 313px;left: 109px" />
 
-      <el-image v-show="!data.arrowList.includes(1)" :src="getImageUrl('arrow-up-off.png')" style="top: 278px;left: 555px" />
-      <el-image v-show="!data.arrowList.includes(2)" :src="getImageUrl('arrow-right-up-off.png')" style="top: 299px;left: 1130px" />
-      <el-image v-show="!data.arrowList.includes(3)" :src="getImageUrl('arrow-right-off.png')" style="top: 761px;left: 1223px" />
-      <el-image v-show="!data.arrowList.includes(4)" :src="getImageUrl('arrow-right-down-off.png')" style="top: 1336px;left: 1130px" />
-      <el-image v-show="!data.arrowList.includes(5)" :src="getImageUrl('arrow-down-off.png')" style="top: 1428px;left: 555px" />
-      <el-image v-show="!data.arrowList.includes(6)" :src="getImageUrl('arrow-left-down-off.png')" style="top: 1336px;left: 95px" />
-      <el-image v-show="!data.arrowList.includes(7)" :src="getImageUrl('arrow-left-off.png')" style="top: 758px;left: 71px" />
-      <el-image v-show="!data.arrowList.includes(8)" :src="getImageUrl('arrow-left-up-off.png')" style="top: 299px;left: 95px" />
+      <el-image v-show="!data.arrowList.includes(1)" :src="getImageUrl('arrow-up-off.png')" style="top: 293px;left: 569px" />
+      <el-image v-show="!data.arrowList.includes(2)" :src="getImageUrl('arrow-right-up-off.png')" style="top: 313px;left: 1141px" />
+      <el-image v-show="!data.arrowList.includes(3)" :src="getImageUrl('arrow-right-off.png')" style="top: 774px;left: 1221px" />
+      <el-image v-show="!data.arrowList.includes(4)" :src="getImageUrl('arrow-right-down-off.png')" style="top: 1347px;left: 1141px" />
+      <el-image v-show="!data.arrowList.includes(5)" :src="getImageUrl('arrow-down-off.png')" style="top: 1427px;left: 569px" />
+      <el-image v-show="!data.arrowList.includes(6)" :src="getImageUrl('arrow-left-down-off.png')" style="top: 1347px;left: 109px" />
+      <el-image v-show="!data.arrowList.includes(7)" :src="getImageUrl('arrow-left-off.png')" style="top: 774px;left: 87px" />
+      <el-image v-show="!data.arrowList.includes(8)" :src="getImageUrl('arrow-left-up-off.png')" style="top: 313px;left: 109px" />
     </div>
     <div v-else-if="(data.type === 'pendulum' && data.pendulumType === 'link-pendulum')" class="link-arrow">
       
@@ -178,7 +184,7 @@
       <span v-else-if="data.def === -2">∞</span>
     </div>
 
-    <div v-if="(data.type === 'monster' && data.cardType === 'link') || (data.type === 'pendulum' && data.pendulumType === 'link-pendulum')" class="card-link" :style="linkStyle">
+    <div v-if="(data.type === 'monster' && data.cardType === 'link') || (data.type === 'pendulum' && data.pendulumType === 'link-pendulum') || ((data.type === 'spell' || data.type ==='trap') && data.cardType=== 'link-continuous')" class="card-link" :style="linkStyle">
       <span>{{ data.language === 'astral' ? numberToFull(data.arrowList.length) : data.arrowList.length }}</span>
     </div>
 
@@ -339,6 +345,21 @@
             name = 'マホウカアド';
           } else if (this.data.type === 'trap') {
             name = 'トラププカアド';
+          }
+        }
+        if (this.data.icon==='link-continuous') {
+          if(this.data.language === 'sc') {
+            name = '连接';
+          } else if (this.data.language === 'tc') {
+            name = '連接';
+          } else if (this.data.language === 'jp') {
+            name = 'リンク';
+          } else if (this.data.language === 'kr') {
+            name = '링크';
+          } else if (this.data.language === 'en') {
+            name = 'Link';
+          } else if (this.data.language === 'astral') {
+            name = 'リンク';
           }
         }
         return name;
@@ -517,7 +538,7 @@
           letterSpacing = '0';
         } else {
           top = '1844px';
-          right = '395px';
+          right = '3109px';
           fontFamily = 'ygo-atk-def, serif';
           fontSize = '62px';
           letterSpacing = '2px';
@@ -687,6 +708,17 @@
     }
 
     .spell-trap {
+      position: absolute;
+      display: flex;
+      align-items: center;
+
+      .el-image {
+        display: flex;
+        min-width: 72px;
+      }
+    }
+
+    .link-spell-trap {
       position: absolute;
       display: flex;
       align-items: center;

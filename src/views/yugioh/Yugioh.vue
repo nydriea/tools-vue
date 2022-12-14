@@ -162,6 +162,7 @@
                 <el-option label="仪式" value="ritual" />
                 <el-option label="永续" value="continuous" />
                 <el-option label="反击" value="counter" />
+                <el-option label="连接-永续" value="link-continuous" />
               </el-select>
             </el-form-item>
           <el-row>
@@ -251,7 +252,7 @@
                 :precision="0"
               />
             </el-form-item>
-            <el-form-item v-if="(form.type === 'monster' && form.cardType === 'link') || (form.type === 'pendulum' && form.pendulumType == 'link-pendulum')"  style="width:10%;margin-left:13px;margin-top:-7px">
+            <el-form-item v-if="(form.type === 'monster' && form.cardType === 'link') || (form.type === 'pendulum' && form.pendulumType == 'link-pendulum') || ((form.type === 'spell' || form.type ==='trap') && form.icon=== 'link-continuous')"  style="width:10%;margin-left:13px;margin-top:-7px">
               <div class="arrow-form" >
                 <div
                   v-for="item in [8,1,2,7,9,3,6,5,4]"

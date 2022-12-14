@@ -156,6 +156,8 @@ export function parseIcon(data) {
     return 'quick-play';
   } else if (data.type & 0x80) {
     return 'ritual';
+  } else if (data.type & 0x4000000) {
+    return 'link-continuous';
   } else {
     return '';
   }
