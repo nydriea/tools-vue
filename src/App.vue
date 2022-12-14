@@ -10,7 +10,7 @@
 
 <style lang="scss">
   * {
-    box-sizing: border-box;
+    // box-sizing: border-box;
     overflow-wrap: break-word;
     -webkit-tap-highlight-color: transparent;
   }

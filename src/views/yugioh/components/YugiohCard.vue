@@ -22,7 +22,7 @@
     </div>
 
     <div v-if="showAttributeRare" class="attribute-rare">
-      <el-image :src="getImageUrl(`attribute-rare.png`)" />
+      <el-image :src="getImageUrl('attribute-rare.png')" />
     </div>
 
     <div v-if="showLevel" class="card-level" :style="levelStyle">

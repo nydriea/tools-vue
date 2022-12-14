@@ -1,8 +1,8 @@
 <template>
-  <div class="app-layout-container">
-    <el-header>
+  <div class="app-layout-container" style="height:100vh">
+    <!-- <el-header>
       <AppHeader />
-    </el-header>
+    </el-header> -->
 
     <el-container>
       <el-aside class="left-aside" width="200px" :style="leftStyle">
@@ -24,7 +24,7 @@
 
   export default {
     name: 'AppLayout',
-    components: {
+    components: { 
       AppHeader,
       AppLeft,
     },
@@ -104,22 +104,29 @@
 </script>
 
 <style lang="scss" scoped>
+.app {
+  height:100vh;
+}
+
   .app-layout-container {
-    .el-header {
-      border-bottom: 1px solid var(--border-color);
-    }
+  height:800px;
+    // .el-header {
+    //   // border-bottom: 1px solid var(--border-color);
+    //   height:0px;
+    // }
 
     .el-container {
-      height: calc(100vh - 60px);
 
+      min-height:100vh;
       .left-aside {
         border-right: 1px solid var(--border-color);
         transition: all 0.3s;
       }
 
-      .el-main {
-        padding: 0;
-      }
+
     }
   }
+  .el-main {
+        padding: 0;
+      }
 </style>
