@@ -173,7 +173,7 @@
                 <el-button plain @click="deleteImage">删除</el-button>
               </el-space>
             </el-form-item>
-            <el-form-item v-if="form.type === 'monster'" label="卡类" style="width:48%;margin-left:40px">
+            <el-form-item v-if="form.type === 'monster'" label="卡类" style="width:32%;margin-left:40px">
               <el-select v-model="form.cardType" >
                 <el-option label="通常" value="normal" />
                 <el-option label="效果" value="effect" />
@@ -185,69 +185,41 @@
                 <el-option label="衍生物" value="token" />
               </el-select>
             </el-form-item>
-            <el-form-item v-if="form.type === 'pendulum'" label="灵摆"  style="width:48%;margin-left:40px">
+            <el-form-item v-if="form.type === 'pendulum'" label="灵摆"  style="width:32%;margin-left:40px">
               <el-select v-model="form.pendulumType" >
-                <el-option label="通常 / 灵摆" value="normal-pendulum" />
-                <el-option label="效果 / 灵摆" value="effect-pendulum" />
-                <el-option label="仪式 / 灵摆" value="ritual-pendulum" />
-                <el-option label="融合 / 灵摆" value="fusion-pendulum" />
-                <el-option label="同调 / 灵摆" value="synchro-pendulum" />
-                <el-option label="超量 / 灵摆" value="xyz-pendulum" />
-                <el-option label="连接 / 灵摆" value="link-pendulum" />
+                <el-option label="通常" value="normal-pendulum" />
+                <el-option label="效果" value="effect-pendulum" />
+                <el-option label="仪式" value="ritual-pendulum" />
+                <el-option label="融合" value="fusion-pendulum" />
+                <el-option label="同调" value="synchro-pendulum" />
+                <el-option label="超量" value="xyz-pendulum" />
+                <el-option label="连接" value="link-pendulum" />
               </el-select>
             </el-form-item>
           </el-row>
           <el-row>
-            <el-form-item v-if="showLevel" label="星级"  style="width:40%">
+            <el-form-item v-if="showLevel" label="星级"  style="width:25%;">
               <el-input-number
                 v-model="form.level"
                 :min="0"
                 :max="13"
                 :precision="0"
+                :controls="false"
+                
               />
             </el-form-item>
-            <el-form-item v-if="showRank" label="阶级"  style="width:40%">
+            <el-form-item v-if="showRank" label="阶级"  style="width:25%">
               <el-input-number
                 v-model="form.rank"
                 :min="0"
                 :max="13"
                 :precision="0"
+                :controls="false"
               />
-            </el-form-item>
-          </el-row>
-            <el-form-item v-if="['monster','pendulum'].includes(form.type)" label="种族" >
-              <el-input v-model="form.monsterType"/>
-            </el-form-item>
-            <el-row>
-            <el-form-item v-if="['monster','pendulum'].includes(form.type)" label="ATK"  style="width:43%">
-              <el-input-number
-                v-model="form.atk"
-                :min="-2"
-                :max="9999"
-                :precision="0"
-              />
-              <!-- <span class="tip">（?：-1，∞：-2）</span> -->
-            </el-form-item>
-            <el-form-item v-if="(form.type === 'monster' && form.cardType !== 'link') || (form.type === 'pendulum' && form.pendulumType != 'link-pendulum')" label="DEF"  style="width:43%;margin-left:35px">
-              <el-input-number
-                v-model="form.def"
-                :min="-2"
-                :max="9999"
-                :precision="0"
-              />
-              <!-- <span class="tip">（?：-1，∞：-2）</span> -->
             </el-form-item>
             
-            <el-form-item v-if="form.type === 'pendulum'" label="刻度" style="width:39%;margin-left:8px">
-              <el-input-number
-                v-model="form.pendulumScale"
-                :min="0"
-                :max="13"
-                :precision="0"
-              />
-            </el-form-item>
-            <el-form-item v-if="(form.type === 'monster' && form.cardType === 'link') || (form.type === 'pendulum' && form.pendulumType == 'link-pendulum') || ((form.type === 'spell' || form.type ==='trap') && form.icon=== 'link-continuous')"  style="width:10%;margin-left:13px;margin-top:-7px">
-              <div class="arrow-form" >
+            <el-form-item v-if="(form.type === 'monster' && form.cardType === 'link') || (form.type === 'pendulum' && form.pendulumType == 'link-pendulum') || ((form.type === 'spell' || form.type ==='trap') && form.icon=== 'link-continuous')" label="连接" class="link-arrows" style="width:85px">
+              <div class="arrow-form" style="margin-top:-7px">
                 <div
                   v-for="item in [8,1,2,7,9,3,6,5,4]"
                   class="arrow-item"
@@ -265,8 +237,43 @@
                 </div>
               </div>
             </el-form-item>
+            <el-form-item v-if="['monster','pendulum'].includes(form.type)"  style="width:20%;margin-left:15px">
+              <el-input-number
+                v-model="form.atk"
+                :min="-2"
+                :max="9999"
+                :precision="0"
+                :controls="false"
+                placeholder="ATK"
+              />
+              <!-- <span class="tip">（?：-1，∞：-2）</span> -->
+            </el-form-item>
+            <el-form-item v-if="(form.type === 'monster' && form.cardType !== 'link') || (form.type === 'pendulum' && form.pendulumType != 'link-pendulum')" style="width:20%;margin-left:15px">
+              <el-input-number
+                v-model="form.def"
+                :min="-2"
+                :max="9999"
+                :precision="0"
+                :controls="false"
+                :placeholder="DEF"
+              />
+              <!-- <span class="tip">（?：-1，∞：-2）</span> -->
+            </el-form-item>
+            
+            <el-form-item v-if="form.type === 'pendulum'" style="width:18%;margin-left:15px">
+              <el-input-number
+                v-model="form.pendulumScale"
+                :min="0"
+                :max="13"
+                :precision="0"
+                :controls="false"
+                :placeholder="刻度值"
+              />
+            </el-form-item>
           </el-row>
-          
+            <el-form-item v-if="['monster','pendulum'].includes(form.type)" label="种族" >
+              <el-input v-model="form.monsterType"/>
+            </el-form-item>
           <el-form-item v-if="form.type === 'pendulum'" label="灵摆效果" label-width="40px">
               <el-input
                 v-model="form.pendulumDescription"
@@ -276,10 +283,9 @@
               />
             </el-form-item>
             <el-form-item label="效果">
-              <el-switch v-model="form.firstLineCompress" active-text="首行压缩" />
+              <!-- <el-switch v-model="form.firstLineCompress" active-text="首行压缩" /> -->
               <el-input
                 v-model="form.description"
-                style="margin-top: 10px"
                 type="textarea"
                 :autosize="{minRows: 3}"
               />
@@ -923,13 +929,13 @@
           margin-right: 2px;
           margin-bottom: 2px;
           border: 1px solid var(--border-color);
-          border-radius: 4px;
+          border-radius: 1px;
           display: flex;
           justify-content: center;
           align-items: center;
           cursor: pointer;
           color: var(--placeholder-color);
-          font-size: 18px;
+          font-size: 10px;
         }
       }
 

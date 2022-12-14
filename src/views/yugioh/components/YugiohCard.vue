@@ -432,9 +432,9 @@
       },
       maskSrc() {
         if (this.data.type === 'pendulum') {
-          return `src/assets/image/card-mask-pendulum.png`;
+          return `${this.baseImage}/card-mask-pendulum.png`;
         } else {
-          return `src/assets/image/card-mask.png`;
+          return `${this.baseImage}/card-mask.png`;
         }
       },
       maskStyle() {
@@ -502,7 +502,7 @@
         if (this.data.type === 'pendulum') {
           top = '1859px';
           left = '116px';
-        } else if ((this.data.type === 'monster' && this.data.cardType === 'link') || (this.data.type === 'pendulum' && this.data.pendulumType === 'link-pendulum')) {
+        } else if (this.data.type === 'monster' && this.data.cardType === 'link') {
           top = '1455px';
           right = '252px';
         } else {
@@ -538,7 +538,7 @@
           letterSpacing = '0';
         } else {
           top = '1844px';
-          right = '3109px';
+          right = '395px';
           fontFamily = 'ygo-atk-def, serif';
           fontSize = '62px';
           letterSpacing = '2px';
@@ -612,14 +612,14 @@
       },
       copyrightSrc() {
         let color = this.data.type === 'monster' && this.data.cardType === 'xyz' ? 'white' : 'black';
-        return `src/assets/image/copyright-${this.data.copyright}-${color}.svg`;
+        return `${this.baseImage}/copyright-${this.data.copyright}-${color}.svg`;
       },
       laserSrc() {
-        return `src/assets/image/${this.data.laser}.png`;
+        return `${this.baseImage}/${this.data.laser}.png`;
       },
       rareSrc() {
         const suffix = this.data.type === 'pendulum' ? '-pendulum' : '';
-        return `src/assets/image/rare-${this.data.rare}${suffix}.png`;
+        return `${this.baseImage}/rare-${this.data.rare}${suffix}.png`;
       },
       rareStyle() {
         return {
@@ -645,7 +645,6 @@
     },
   };
 </script>
-
 <style lang="scss" scoped>
   @use "../style/sc" as *;
   @use "../style/tc" as *;
@@ -653,7 +652,6 @@
   @use "../style/kr" as *;
   @use "../style/en" as *;
   @use "../style/astral" as *;
-
   .yugioh-card {
     width: 1394px;
     height: 2031px;
@@ -669,73 +667,50 @@
     color: black;
     line-height: 1.15;
     transform-origin: 0 0;
-
     .card-name {
       position: absolute;
       left: 116px;
       width: 1030px;
     }
-
     .card-attribute {
       position: absolute;
       left: 1163px;
       top: 96px;
     }
-
     .attribute-rare {
       position: absolute;
       left: 1163px;
       top: 96px;
       z-index: 10;
     }
-
     .card-level {
       position: absolute;
       top: 247px;
-
       .el-image {
         margin-left: 4px;
       }
     }
-
     .card-rank {
       position: absolute;
       top: 247px;
-
       .el-image {
         margin-right: 4px;
       }
     }
-
     .spell-trap {
       position: absolute;
       display: flex;
       align-items: center;
-
       .el-image {
         display: flex;
         min-width: 72px;
       }
     }
-
-    .link-spell-trap {
-      position: absolute;
-      display: flex;
-      align-items: center;
-
-      .el-image {
-        display: flex;
-        min-width: 72px;
-      }
-    }
-
     .card-image {
       position: absolute;
-
       .el-image {
         width: 100%;
         height: 100%;
-
         .image-slot {
           display: flex;
           flex-direction: column;
@@ -746,7 +721,6 @@
           font-size: 120px;
           color: var(--normal-color);
           background: white;
-
           .image-tip {
             font-family: var(--default-font-family);
             font-size: 28px;
@@ -756,26 +730,22 @@
         }
       }
     }
-
     .card-mask {
       position: absolute;
       z-index: 10;
     }
-
     .left-pendulum {
       position: absolute;
       width: 115px;
       text-align: center;
       z-index: 20;
     }
-
     .right-pendulum {
       position: absolute;
       width: 115px;
       text-align: center;
       z-index: 20;
     }
-
     .pendulum-description {
       position: absolute;
       left: 221px;
@@ -783,21 +753,18 @@
       text-align: justify;
       z-index: 20;
     }
-
     .card-package {
       position: absolute;
       font-family: ygo-password, serif;
       font-size: 40px;
       z-index: 20;
     }
-
     .link-arrow {
       .el-image {
         position: absolute;
         z-index: 120;
       }
     }
-
     .card-description {
       position: absolute;
       left: 109px;
@@ -805,30 +772,25 @@
       text-align: justify;
       z-index: 20;
     }
-
     .atk-def-link {
       position: absolute;
       left: 109px;
       top: 1844px;
       z-index: 20;
     }
-
     .card-atk {
       position: absolute;
       z-index: 20;
     }
-
     .card-def {
       position: absolute;
       z-index: 20;
     }
-
     .card-link {
       position: absolute;
       transform-origin: 50% 50%;
       z-index: 20;
     }
-
     .card-password {
       position: absolute;
       left: 66px;
@@ -837,21 +799,18 @@
       font-size: 40px;
       z-index: 20;
     }
-
     .card-copyright {
       position: absolute;
       top: 1936px;
       right: 141px;
       z-index: 20;
     }
-
     .card-laser {
       position: absolute;
       left: 1276px;
       top: 1913px;
       z-index: 120;
     }
-
     .card-rare {
       position: absolute;
       top: 0;
@@ -861,7 +820,6 @@
       z-index: 100;
       overflow: hidden;
     }
-
     .card-twentieth {
       position: absolute;
       top: 1532px;

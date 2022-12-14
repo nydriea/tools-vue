@@ -49,10 +49,10 @@ export default createStore({
           position: 'bottom-right',
         });
       }
-      state.staticURL = `https://${prefix}static.kooriookami.top`;
-      loadCSS(`${state.staticURL}/font/fontawesome-pro-6.1.0/css/all.css`);
-      loadCSS(`${state.staticURL}/yugioh/font/ygo-font.css`);
-      loadCSS(`${state.staticURL}/rush-duel/font/rd-font.css`);
+      state.staticURL = `/src/assets/`;
+      loadCSS(`/src/assets/css/all.css`);
+      loadCSS(`/src/assets/css/ygo-font.css`);
+      loadCSS(`/src/assets/css/rd-font.css`);
     },
     setUserInfo(state) {
       try {

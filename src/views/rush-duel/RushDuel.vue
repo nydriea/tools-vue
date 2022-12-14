@@ -651,7 +651,7 @@
     computed: {
       ...mapState(['fontLoading', 'staticURL', 'isAdmin', 'isMember']),
       baseImage() {
-        return `${this.staticURL}/tools/image`;
+        return `${this.staticURL}/image`;
       },
       showLevel() {
         let flag = false;

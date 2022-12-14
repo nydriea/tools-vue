@@ -1,0 +1,104 @@
+@font-face {
+    font-family: "ygo-sc";
+    src: url("/scr/assets/font/ygo-sc.woff2") format("woff2"),
+    url("/scr/assets/font/ygo-sc.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ygo-tc";
+    src: url("/scr/assets/font/ygo-tc.woff2") format("woff2"),
+    url("/scr/assets/font/ygo-tc.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ygo-jp";
+    src: url("/scr/assets/font/ygo-jp.woff2") format("woff2"),
+    url("/scr/assets/font/ygo-jp.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ygo-kr";
+    src: url("/scr/assets/font/ygo-kr.woff2") format("woff2"),
+    url("/scr/assets/font/ygo-kr.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ygo-kr-name";
+    src: url("/scr/assets/font/ygo-kr-name.woff2") format("woff2"),
+    url("/scr/assets/font/ygo-kr-name.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ygo-kr-race";
+    src: url("/scr/assets/font/ygo-kr-race.woff2") format("woff2"),
+    url("/scr/assets/font/ygo-kr-race.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ygo-en";
+    src: url("/scr/assets/font/ygo-en.woff2") format("woff2"),
+    url("/scr/assets/font/ygo-en.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ygo-en-italic";
+    src: url("/scr/assets/font/ygo-en-italic.woff2") format("woff2"),
+    url("/scr/assets/font/ygo-en-italic.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ygo-en-name";
+    src: url("/scr/assets/font/ygo-en-name.woff2") format("woff2"),
+    url("/scr/assets/font/ygo-en-name.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ygo-en-race";
+    src: url("/scr/assets/font/ygo-en-race.woff2") format("woff2"),
+    url("/scr/assets/font/ygo-en-race.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ygo-astral";
+    src: url("/scr/assets/font/ygo-astral.woff2") format("woff2"),
+    url("/scr/assets/font/ygo-astral.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ygo-tip";
+    src: url("/scr/assets/font/ygo-tip.woff2") format("woff2"),
+    url("/scr/assets/font/ygo-tip.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ygo-atk-def";
+    src: url("/scr/assets/font/ygo-atk-def.woff2") format("woff2"),
+    url("/scr/assets/font/ygo-atk-def.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ygo-link";
+    src: url("/scr/assets/font/ygo-link.woff2") format("woff2"),
+    url("/scr/assets/font/ygo-link.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ygo-password";
+    src: url("/scr/assets/font/ygo-password.woff2") format("woff2"),
+    url("/scr/assets/font/ygo-password.woff") format("woff");
+    font-display: swap;
+}

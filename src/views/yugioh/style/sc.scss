@@ -1,5 +1,5 @@
 .sc-class {
-  font-family: 华文中宋, 华文中宋, serif;
+  font-family: ygo-sc, 华文中宋, serif;
 
   .card-name {
     top: 96px;
@@ -43,14 +43,14 @@
     top: 1282px;
     font-size: calc(36px * var(--descriptionZoom));
     letter-spacing: 2px;
-    line-height: 1.2;
+    line-height: 1.185;
   }
 
   .card-description {
     top: 1528px;
     font-size: calc(36px * var(--descriptionZoom));
     letter-spacing: 2px;
-    line-height: 1.2;
+    line-height: 1.185;
 
     .card-effect {
       font-size: 44px;

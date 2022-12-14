@@ -28,17 +28,17 @@ export default {
       return response.data;
     }, error => {
       // 对响应错误做点什么
-      let message = error.response?.data?.message ?? error.message;
-      ElNotification.error({
-        title: '错误',
-        message: message,
-      });
-      if (error.response.status === 401) {
-        store.dispatch('removeUserInfo').then(() => {
-          location.reload();
-        });
-      }
-      return Promise.reject(error);
+      // let message = error.response?.data?.message ?? error.message;
+      // ElNotification.error({
+      //   title: '错误',
+      //   message: message,
+      // });
+      // if (error.response.status === 401) {
+      //   store.dispatch('removeUserInfo').then(() => {
+      //     location.reload();
+      //   });
+      // }
+      // return Promise.reject(error);
     });
 
     app.config.globalProperties.axios = axios;
