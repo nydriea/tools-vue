@@ -2,6 +2,11 @@
 
 这个小工具是基于 Vue 3 + Element Plus 编写的，不定期发布和更新有趣实用的小工具。
 
+使用时请将src\views\yugioh\style\sc.scss中的font-family修改：
+```
+font-family: ygo-sc, 楷体, serif;
+```
+
 ## 安装运行
 
 ### 运行环境
