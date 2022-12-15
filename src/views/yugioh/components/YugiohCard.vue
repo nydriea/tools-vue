@@ -251,7 +251,7 @@
     computed: {
       ...mapState(['staticURL']),
       baseImage() {
-        return `${this.staticURL}/yugioh/image`;
+        return `${this.staticURL}/image`;
       },
       cardClass() {
         return `${this.data.language}-class`;

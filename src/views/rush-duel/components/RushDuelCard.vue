@@ -153,7 +153,7 @@
     computed: {
       ...mapState(['staticURL']),
       baseImage() {
-        return `${this.staticURL}/rush-duel/image`;
+        return `${this.staticURL}/image/rd`;
       },
       cardClass() {
         return `${this.data.language}-class`;
